@@ -59,7 +59,7 @@ public class LockedCacheEvictAspect {
         LockedCacheEvict annotation = targetMethod.getAnnotation(LockedCacheEvict.class);//反射得到自定义注解的方法对象
         String name = "";
         String key;
-        //获取自定义注解的值，是否使用el表达式
+        //获取自定义注解的值，是否使用Spel表达式
         if (annotation != null) {
             if (StrUtil.isNotBlank(annotation.cacheName())) {
                 name = annotation.cacheName();
@@ -88,7 +88,6 @@ public class LockedCacheEvictAspect {
         Object proceed = null;
         try {
             writeLock.lock();
-            //执行加入双删注解的改动数据库的业务 即controller中的方法业务
             try {
                 proceed = proceedingJoinPoint.proceed();
                 System.out.println(proceedingJoinPoint.getSignature().getName()+"方法执行结束");

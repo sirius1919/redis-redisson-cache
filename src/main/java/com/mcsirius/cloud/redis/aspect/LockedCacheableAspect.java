@@ -67,7 +67,7 @@ public class LockedCacheableAspect {
         String key;
         Duration duration = null;
         boolean sync = false;
-        //获取自定义注解的值，是否使用el表达式
+        //获取自定义注解的值，是否使用Spel表达式
         if (annotation != null) {
             if (StrUtil.isNotBlank(annotation.cacheName())) {
                 name = annotation.cacheName();
